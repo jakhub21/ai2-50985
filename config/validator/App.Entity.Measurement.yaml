@@ -1,0 +1,43 @@
+App\Entity\Measurement:
+  properties:
+    location:
+      - NotBlank:
+          message: "Location is required."
+          groups: ['create', 'edit']
+    date:
+      - NotBlank:
+          message: "Date is required."
+          groups: ['create', 'edit']
+      - Date:
+            message: "Date is not valid."
+      - Range:
+          min: '2000-01-01'
+          max: '2030-12-31'
+          notInRangeMessage: "Date must be between {{ min }} and {{ max }}."
+    celsius:
+      - NotBlank:
+          message: "Temperature in Celsius is required."
+          groups: ['create', 'edit']
+      - Range:
+          min: -50
+          max: 50
+          notInRangeMessage: "Temperature must be between {{ min }} and {{ max }} degrees Celsius."
+          groups: ['create', 'edit']
+    Wind:
+      - NotBlank:
+          message: "Wind speed is required."
+          groups: ['create', 'edit']
+      - Range:
+          min: 0
+          max: 300
+          notInRangeMessage: "Wind speed must be between {{ min }} and {{ max }} km/h."
+          groups: ['create', 'edit']
+    humidity:
+      - NotBlank:
+          message: "Humidity is required."
+          groups: ['create', 'edit']
+      - Range:
+          min: 0
+          max: 100
+          notInRangeMessage: "Humidity must be between {{ min }}% and {{ max }}%."
+          groups: ['create', 'edit']
