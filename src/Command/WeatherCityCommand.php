@@ -17,6 +17,8 @@ use App\Repository\LocationRepository;
     description: 'City measurments',
 )]
 class WeatherCityCommand extends Command
+{
+    public function __construct(private readonly WeatherUtil $weatherUtil, private readonly LocationRepository $locationRepository, string $city = null)
     {
         parent::__construct($city);
     }
